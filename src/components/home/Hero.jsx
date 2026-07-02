@@ -23,11 +23,10 @@ const Hero = () => {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      className="hero-section relative min-h-[50vh] h-[70vh] lg:h-screen w-full overflow-hidden bg-[#160823]"
+      className="hero-section relative h-[500px] sm:h-[60vh] md:h-[50vh] lg:h-screen w-full overflow-hidden bg-[#160823]"
     >
       <Navbar />
 
-      {/* Rest of your component remains the same... */}
       {/* Cursor-revealed grid */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
@@ -49,18 +48,18 @@ const Hero = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        className="relative z-[10] flex flex-col items-center justify-center text-center pt-30 sm:pt-32 md:pt-40 pb-8 sm:pb-12 md:pb-0 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40"
+        className="relative z-[10] flex flex-col items-center justify-center text-center pt-30 sm:pt-28 md:pt-20 pb-4 sm:pb-8 md:pb-0 px-4 sm:px-6 md:px-12 lg:px-20 lg:py-10 xl:px-32 2xl:px-40"
       >
-        <h1 className="font-bold leading-[1.1] text-[26px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[4rem] max-w-5xl bg-gradient-to-r from-[#8B8599] via-white via-[48%] via-white via-[65%] to-[#8B8599] bg-clip-text text-transparent">
+        <h1 className="font-bold leading-[1.1] text-[33px] sm:text-[28px] md:text-[50px] lg:text-3xl xl:text-[3.5rem] max-w-5xl bg-gradient-to-r from-[#8B8599] via-white via-[48%] via-white via-[65%] to-[#8B8599] bg-clip-text text-transparent">
           AI-Powered Productivity
           <br />
           with Human Precision
         </h1>
 
-        <p className="mt-6 text-white/70 text-[14px] sm:text-lg md:text-xl max-w-3xl">
-          Helping professionals build, find, and use AI agents that drive
-          real-world impact
-        </p>
+        <p className="mt-6 text-white/70 text-[16px] sm:text-lg md:text-[25px] max-w-3xl px-10 sm:px-8 md:px-12 lg:px-0 xl:text-[18px] 2xl:px-0">
+  Helping professionals build, find, and use AI agents that drive
+  real-world impact
+</p>
       </motion.div>
 
       <OrbitalSystem />

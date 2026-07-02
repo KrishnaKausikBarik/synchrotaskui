@@ -63,7 +63,7 @@ const SERVICES = [
 
 const Services = () => {
   return (
-    <section className="relative w-full bg-[#07000E] py-20 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+    <section className="relative w-full bg-[#07000E] py-10 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
       {/* Section Header */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -73,7 +73,7 @@ const Services = () => {
         className="max-w-7xl mx-auto mb-16"
       >
         <div className="flex items-center gap-5 mb-2">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+          <h2 className="text-[33px] sm:text-[28px] md:text-[50px] lg:text-3xl xl:text-[3.5rem] font-bold text-white">
             Services we offer
           </h2>
           <div className="flex flex-col gap-[10px] mt-1">

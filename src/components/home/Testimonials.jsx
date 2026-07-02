@@ -35,9 +35,9 @@ const StarIcon = () => (
 const Testimonials = () => {
   return (
     <section
-  className="relative w-full bg-cover bg-center bg-fixed py-24 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40"
-  style={{ backgroundImage: `url(${TestimonialBg})` }}
->
+      className="relative w-full bg-cover bg-center bg-fixed py-5 md:py-20 lg:py-24 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40"
+      style={{ backgroundImage: `url(${TestimonialBg})` }}
+    >
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-[#000000]/70"></div>
 
@@ -77,7 +77,7 @@ const Testimonials = () => {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-12">
+          <h2 className="font-bold leading-[1.1] text-[28px] sm:text-[28px] md:text-[50px] lg:text-3xl xl:text-[3.5rem] max-w-5xl text-white mb-6 md:mb-10 lg:mb-12">
             What they say about us?
           </h2>
         </motion.div>
@@ -90,21 +90,29 @@ const Testimonials = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]"
         >
-          <div className="flex w-max animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused] gap-6">
+          <div className="flex w-max animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused] gap-4 md:gap-6">
             {[...testimonials, ...testimonials].map((t, idx) => (
               <div
                 key={idx}
-                className="w-[280px] sm:w-[320px] shrink-0 rounded-2xl p-6 bg-black/44 border border-white/30 "
+                className="w-[260px] sm:w-[280px] md:w-[320px] shrink-0 rounded-2xl p-5 md:p-6 bg-black/44 border border-white/30 flex flex-col"
               >
-                <h3 className="text-lg font-semibold text-white mb-3">
+                <h3 className="text-base md:text-lg font-semibold text-white mb-2 md:mb-3">
                   Easy to Understand
                 </h3>
-                <p className="text-sm text-white/60 leading-relaxed mb-6">
+                <p className="text-sm text-white/60 leading-relaxed mb-3 md:mb-4">
                   Lorem ipsum dolor sit amet consectetur. adipisicing elit. Iure,
                   ipsum similique, eveniet
                 </p>
 
-                <div className="flex items-center justify-between">
+                {/* Stars - Below description, above name */}
+                <div className="flex items-center gap-0.5 mb-3 md:mb-4">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <StarIcon key={i} />
+                  ))}
+                </div>
+
+                {/* Name and Avatar */}
+                <div className="flex items-center justify-between mt-auto">
                   <div className="flex items-center gap-3">
                     <img
                       src={t.avatar}
@@ -115,12 +123,6 @@ const Testimonials = () => {
                       <p className="text-sm font-semibold text-white">{t.name}</p>
                       <p className="text-xs text-white/50">{t.role}</p>
                     </div>
-                  </div>
-
-                  <div className="flex items-center gap-0.5">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <StarIcon key={i} />
-                    ))}
                   </div>
                 </div>
               </div>

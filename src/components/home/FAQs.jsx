@@ -1,32 +1,36 @@
 import React, { useState } from 'react'
 import FAQOrbital from '../ui/FAQOrbital'
 import { motion, AnimatePresence } from 'framer-motion'
+import faqImage1 from '../../assets/Components/FAQs/image1.png'
+import faqImage2 from '../../assets/Components/FAQs/image2.png'
+import faqImage3 from '../../assets/Components/FAQs/image3.png'
+import faqImage4 from '../../assets/Components/FAQs/image4.png'
 
 const faqs = [
   {
     question: 'What is SynchroTask AI?',
     answer: 'SynchroTask AI is an intelligent task management platform that uses AI to help you organize, prioritize, and complete your work more efficiently.',
-    image: 'https://via.placeholder.com/200x150/FFFFFF/6A218D?text=SynchroTask+AI'
+    image: faqImage1
   },
   {
     question: 'How does the AI assistant work?',
     answer: 'Our AI analyzes your tasks, deadlines, and work patterns to suggest optimal schedules and automate repetitive workflows.',
-    image: 'https://via.placeholder.com/200x150/FFFFFF/6A218D?text=AI+Assistant'
+    image: faqImage2
   },
   {
     question: 'Is my data secure?',
     answer: 'Yes, we use end-to-end encryption and never share your data with third parties. Your privacy is our top priority.',
-    image: 'https://via.placeholder.com/200x150/FFFFFF/6A218D?text=Data+Security'
+    image: faqImage3
   },
   {
     question: 'Can I use it for free?',
     answer: 'We offer a free tier with core features. Premium plans unlock advanced AI capabilities and team collaboration tools.',
-    image: 'https://via.placeholder.com/200x150/FFFFFF/6A218D?text=Free+Tier'
+    image: faqImage4
   },
   {
     question: 'Does it integrate with other tools?',
     answer: 'SynchroTask integrates with Slack, Notion, Google Calendar, GitHub, and many more popular productivity tools.',
-    image: 'https://via.placeholder.com/200x150/FFFFFF/6A218D?text=Integrations'
+    image: faqImage1
   },
 ]
 
@@ -58,7 +62,7 @@ const FAQ = () => {
   const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
 
   return (
-    <section className="relative w-full min-h-screen py-24 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40 bg-[#160823] overflow-hidden">
+    <section className="relative w-full min-h-[80vh] md:min-h-[70vh] lg:min-h-screen py-16 md:py-10 lg:py-24 px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40 bg-[#160823] overflow-hidden">
 
       {/* Purple glow - left */}
       <div className="absolute -left-40 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-purple-700/40 blur-[120px] pointer-events-none" />
@@ -77,7 +81,7 @@ const FAQ = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        className="relative z-10 max-w-7xl mx-auto mb-16"
+        className="relative z-10 max-w-7xl mx-auto mb-10 md:mb-6 lg:mb-16"
       >
         <div className="flex items-center gap-5 mb-2">
           <h2 className="text-4xl md:text-5xl font-bold text-white">

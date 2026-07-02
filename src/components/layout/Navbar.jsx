@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHeroVisible, setIsHeroVisible] = useState(true);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -15,18 +16,21 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Get the hero section height
       const heroSection = document.querySelector('.hero-section');
       if (heroSection) {
         const heroHeight = heroSection.offsetHeight;
-        // Check if scrolled past hero section
         if (window.scrollY > heroHeight - 100) {
           setIsHeroVisible(false);
-          // Close menu if open when leaving hero
           if (isOpen) setIsOpen(false);
         } else {
           setIsHeroVisible(true);
         }
+      }
+
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
       }
     };
 
@@ -39,7 +43,9 @@ const Navbar = () => {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-0 left-0 w-full z-50"
+      className={`top-0 left-0 w-full z-50 transition-all duration-300 md:sticky lg:sticky fixed ${
+        isScrolled ? "bg-[#160823] border-0 shadow-none" : "bg-transparent border-0 shadow-none"
+      }`}
     >
       <style>{`
         /* Base Navbar Styles */
@@ -50,9 +56,10 @@ const Navbar = () => {
           background: transparent;
           transition: all 0.3s ease;
           position: relative;
+          border: none !important;
+          outline: none !important;
         }
 
-        /* Desktop */
         @media (min-width: 1024px) {
           .navbar-container {
             justify-content: flex-end;
@@ -68,7 +75,7 @@ const Navbar = () => {
           gap: 6px;
           cursor: pointer;
           background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.1) !important;
           border-radius: 8px;
           padding: 10px 12px;
           z-index: 60;
@@ -81,6 +88,7 @@ const Navbar = () => {
           opacity: 1;
           transform: scale(1);
           pointer-events: auto;
+          box-shadow: none !important;
         }
 
         .hamburger.hidden {
@@ -91,7 +99,7 @@ const Navbar = () => {
 
         .hamburger:hover {
           background: rgba(255, 255, 255, 0.1);
-          border-color: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 255, 255, 0.2) !important;
         }
 
         .hamburger span {
@@ -135,7 +143,6 @@ const Navbar = () => {
           margin-bottom: -1.25px;
         }
 
-        /* Hide hamburger on desktop */
         @media (min-width: 1024px) {
           .hamburger {
             display: none;
@@ -151,7 +158,7 @@ const Navbar = () => {
           align-items: center;
           gap: 2.5rem;
           color: white;
-          font-size: 15px;
+          font-size: 12px;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           list-style: none;
@@ -169,20 +176,19 @@ const Navbar = () => {
           color: #a78bfa;
         }
 
-        /* Hide on mobile/tablet */
         @media (max-width: 1023px) {
           .nav-links {
             display: none;
           }
         }
 
-        /* Mobile Menu */
+        /* Mobile Menu - NOT full viewport */
         .mobile-menu {
           position: fixed;
           top: 0;
           left: 0;
           width: 100%;
-          height: 100vh;
+          max-height: 85vh;
           background: rgba(0, 0, 0, 0.95);
           backdrop-filter: blur(10px);
           display: flex;
@@ -190,14 +196,21 @@ const Navbar = () => {
           align-items: center;
           justify-content: center;
           gap: 1.5rem;
-          transform: translateX(-100%);
+          transform: translateY(-100%);
           transition: transform 0.3s ease;
           z-index: 40;
           padding-top: 5rem;
+          padding-bottom: 2rem;
+          overflow-y: auto;
+          border-bottom-left-radius: 16px;
+          border-bottom-right-radius: 16px;
+          border: none !important;
+          outline: none !important;
+          box-shadow: none !important;
         }
 
         .mobile-menu.active {
-          transform: translateX(0);
+          transform: translateY(0);
         }
 
         .mobile-menu ul {
@@ -227,7 +240,6 @@ const Navbar = () => {
           color: #a78bfa;
         }
 
-        /* Mobile Buttons Container */
         .mobile-buttons {
           display: flex;
           flex-direction: column;
@@ -248,14 +260,12 @@ const Navbar = () => {
           transition: all 0.3s ease;
         }
 
-        /* Hide mobile menu on desktop */
         @media (min-width: 1024px) {
           .mobile-menu {
             display: none;
           }
         }
 
-        /* Right Buttons - Desktop */
         .nav-buttons {
           display: flex;
           align-items: center;
@@ -265,37 +275,42 @@ const Navbar = () => {
 
         .nav-buttons button {
           padding: 0.75rem 1.75rem;
-          font-size: 15px;
+          font-size: 12px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           border-radius: 0.5rem;
           cursor: pointer;
           white-space: nowrap;
           transition: all 0.3s ease;
+          outline: none !important;
         }
 
+        /* Login Button - Strong White Border */
         .login-btn {
-          border: 1px solid rgba(255, 255, 255, 0.6);
-          color: white;
-          background: transparent;
+          background: rgba(255, 255, 255, 0.12) !important;
+          border: 2px solid rgba(255, 255, 255, 0.9) !important;
+          color: white !important;
+          backdrop-filter: blur(4px);
+          transition: all 0.3s ease;
+          box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
 
         .login-btn:hover {
-          border-color: white;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.25) !important;
+          border-color: #ffffff !important;
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         .signup-btn {
-          background: #a855f7;
-          color: white;
-          border: none;
+          background: #a855f7 !important;
+          color: white !important;
+          border: none !important;
         }
 
         .signup-btn:hover {
-          background: #9333ea;
+          background: #9333ea !important;
         }
 
-        /* Hide buttons on mobile */
         @media (max-width: 1023px) {
           .nav-buttons {
             display: none;
@@ -311,6 +326,7 @@ const Navbar = () => {
             gap: 5px;
             top: 16px;
             right: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
           }
 
           .hamburger span {
@@ -327,8 +343,10 @@ const Navbar = () => {
           }
 
           .mobile-menu {
+            max-height: 80vh;
             padding-top: 4rem;
             gap: 1rem;
+            border: none !important;
           }
 
           .mobile-menu ul {
@@ -351,11 +369,15 @@ const Navbar = () => {
           }
         }
 
-        /* Tablet optimizations */
         @media (min-width: 641px) and (max-width: 1023px) {
           .hamburger {
             top: 28px;
             right: 32px;
+          }
+
+          .mobile-menu {
+            max-height: 80vh;
+            border: none !important;
           }
 
           .mobile-menu ul {
@@ -372,11 +394,12 @@ const Navbar = () => {
           }
         }
 
-        /* Landscape mode */
         @media (max-height: 600px) and (orientation: landscape) {
           .mobile-menu {
+            max-height: 70vh;
             padding-top: 2rem;
             gap: 0.75rem;
+            border: none !important;
           }
 
           .mobile-menu ul {
@@ -385,7 +408,7 @@ const Navbar = () => {
 
           .mobile-menu li {
             padding: 0.4rem 0;
-            font-size: 15px;
+            font-size: 14px;
           }
 
           .mobile-buttons {
@@ -394,18 +417,16 @@ const Navbar = () => {
 
           .mobile-buttons button {
             padding: 0.5rem 1rem;
-            font-size: 15px;
+            font-size: 14px;
           }
         }
 
-        /* Prevent scroll when menu is open */
         body.menu-open {
           overflow: hidden;
         }
       `}</style>
 
-      <div className="navbar-container px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40 py-6 md:py-8">
-        {/* Hamburger Menu - Fixed Position */}
+      <div className="navbar-container px-6 md:px-12 lg:px-20 xl:px-32 2xl:px-40 py-4 md:py-5 lg:py-6">
         <button
           className={`hamburger ${isOpen ? "active" : ""} ${!isHeroVisible ? "hidden" : ""}`}
           onClick={toggleMenu}
@@ -417,7 +438,6 @@ const Navbar = () => {
           <span></span>
         </button>
 
-        {/* Center Links - Desktop */}
         <ul className="nav-links">
           <li onClick={closeMenu}>Home</li>
           <li onClick={closeMenu}>About Us</li>
@@ -426,14 +446,13 @@ const Navbar = () => {
           <li onClick={closeMenu}>Contact</li>
         </ul>
 
-        {/* Right Buttons - Desktop */}
         <div className="nav-buttons">
           <button className="login-btn">Log In</button>
           <button className="signup-btn">Sign Up</button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - NOT full viewport */}
       <div className={`mobile-menu ${isOpen ? "active" : ""}`}>
         <ul>
           <li onClick={closeMenu}>Home</li>

@@ -91,14 +91,14 @@ const Subscription = () => {
         transition={{ duration: 0.6 }}
         className="max-w-7xl mx-auto mb-16"
       >
-        <div className="flex items-center gap-5 mb-2">
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
+        <div className="flex items-center gap-3 mb-2 flex-wrap">
+          <h2 className="text-[33px] sm:text-[28px] md:text-[40px] lg:text-3xl xl:text-[3.5rem] font-bold text-white">
             Pricing Plans of Your Art Journey
+            <span className="inline-flex flex-col gap-[10px] ml-3 align-middle">
+              <span className="h-[2px] w-16 bg-[#A855F7] block"></span>
+              <span className="h-[2px] w-8 bg-[#A855F7] block"></span>
+            </span>
           </h2>
-          <div className="flex flex-col gap-[10px] mt-1">
-            <div className="h-[2px] w-16 bg-[#A855F7]"></div>
-            <div className="h-[2px] w-8 bg-[#A855F7]"></div>
-          </div>
         </div>
       </motion.div>
 
@@ -115,7 +115,7 @@ const Subscription = () => {
             }
           }
         }}
-        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6"
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {/* Preview Card */}
         <TiltCard 
@@ -123,30 +123,30 @@ const Subscription = () => {
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
           }}
-          className="rounded-2xl p-7 bg-[#0A0A0A] border-[2.573px] border-[#848484] flex flex-col h-full"
+          className="rounded-2xl p-5 md:p-7 bg-[#0A0A0A] border-[2.573px] border-[#848484] flex flex-col h-full"
         >
-          <h3 className="text-s font-semibold tracking-wider text-white/80 mb-3">
+          <h3 className="text-xs md:text-s font-semibold tracking-wider text-white/80 mb-3">
             PREVIEW
           </h3>
-          <p className="text-xs text-white/50 leading-relaxed mb-8">
+          <p className="text-[11px] md:text-xs text-white/50 leading-relaxed mb-8">
             Lorem ipsum dolor sit amet consectetur adipiscing elit. Quis
             laudantium libero expedita totam doloremque. Amet quibusdam
             repudiandae sapiente voluptatem mollitia soluta nulla quam alias,
             esque doloremque modi laboriosam esse eos?
           </p>
 
-          <div className="text-5xl font-bold text-white mb-6">FREE</div>
+          <div className="text-4xl md:text-5xl font-bold text-white mb-6">FREE</div>
 
-          <button className="w-full py-3 rounded-full bg-[#484848]  text-white font-medium mb-8 shadow-[0_5.147px_35.77px_0_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02] flex items-center justify-center whitespace-nowrap">
+          <button className="w-full py-2.5 md:py-3 rounded-full bg-[#484848] text-white font-medium mb-8 shadow-[0_5.147px_35.77px_0_rgba(0,0,0,0.25)] transition-transform hover:scale-[1.02] flex items-center justify-center whitespace-nowrap text-sm md:text-base">
             Get it Now!
           </button>
 
-          <p className="text-sm text-white/60 mb-4">Everything in PREVIEW plus:</p>
-          <ul className="flex flex-col gap-3">
+          <p className="text-xs md:text-sm text-white/60 mb-4">Everything in PREVIEW plus:</p>
+          <ul className="flex flex-col gap-2 md:gap-3">
             {features.map((feature) => (
               <li
                 key={feature}
-                className="flex items-center gap-2 text-sm text-white/70"
+                className="flex items-center gap-2 text-xs md:text-sm text-white/70"
               >
                 <span className="text-white/50">
                   <CheckIcon />
@@ -163,36 +163,38 @@ const Subscription = () => {
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
           }}
-          className="rounded-2xl p-7 flex flex-col border-[2.573px] border-[#848484] bg-[linear-gradient(180deg,#000_0%,#326678_35%,#FFF_55%,#188DAE_60%,#033C79_80%,#020204_100%)] h-full"
+          className="rounded-2xl p-5 md:p-7 flex flex-col border-[2.573px] border-[#848484] bg-[linear-gradient(180deg,#000_0%,#326678_35%,#FFF_55%,#188DAE_60%,#033C79_80%,#020204_100%)] h-full"
         >
-          <h3 className="text-s font-semibold tracking-wider text-white/90 mb-3">
+          <h3 className="text-xs md:text-s font-semibold tracking-wider text-white/90 mb-3">
             SOLO PRO
           </h3>
-          <p className="text-xs text-white/80 leading-relaxed mb-8">
+          <p className="text-[11px] md:text-xs text-white/80 leading-relaxed mb-8">
             Lorem ipsum dolor sit amet consectetur adipiscing elit. Quas
             laudantium libero expedita totam doloremque. Amet quibusdam
             repudiandae sapiente voluptatem mollitia soluta nulla quam alias,
             esque doloremque modi laboriosam esse eos?
           </p>
 
-          <div className="flex items-end gap-2 mb-6">
-            <span className="text-5xl font-bold text-white leading-none">$60</span>
+          <div className="flex items-end gap-2 mb-6 flex-wrap">
+            <span className="text-4xl md:text-5xl font-bold text-white leading-none whitespace-nowrap">
+              $60
+            </span>
             <span className="flex flex-col leading-tight pb-1">
-              <span className="text-xs font-semibold text-white">USD</span>
-              <span className="text-xs text-white/80 whitespace-nowrap">One time purchase</span>
+              <span className="text-[10px] md:text-xs font-semibold text-white">USD</span>
+              <span className="text-[9px] md:text-xs text-white/80 whitespace-nowrap">One time purchase</span>
             </span>
           </div>
 
-          <button className="w-full py-3 font-medium mb-8 transition-transform hover:scale-[1.02] text-black flex items-center justify-center whitespace-nowrap rounded-[36.671px] bg-white shadow-[0_5.147px_35.77px_0_rgba(0,0,0,0.25)]">
+          <button className="w-full py-2.5 md:py-3 font-medium mb-8 transition-transform hover:scale-[1.02] text-black flex items-center justify-center whitespace-nowrap rounded-[36.671px] bg-white shadow-[0_5.147px_35.77px_0_rgba(0,0,0,0.25)] text-sm md:text-base">
             Get it Now!
           </button>
 
-          <p className="text-sm text-white/90 mb-4">Everything in PREVIEW plus:</p>
-          <ul className="flex flex-col gap-3">
+          <p className="text-xs md:text-sm text-white/90 mb-4">Everything in PREVIEW plus:</p>
+          <ul className="flex flex-col gap-2 md:gap-3">
             {features.map((feature) => (
               <li
                 key={feature}
-                className="flex items-center gap-2 text-sm text-white/90"
+                className="flex items-center gap-2 text-xs md:text-sm text-white/90"
               >
                 <span className="text-white/80">
                   <CheckIcon />
@@ -209,36 +211,38 @@ const Subscription = () => {
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
           }}
-          className="rounded-2xl p-7 flex flex-col border-[2.573px] border-[#848484] bg-[linear-gradient(180deg,#000_0%,#4D1561_35%,#FFF_55%,#7D0BA8_60%,#2A0270_80%,#020204_100%)] h-full"
+          className="rounded-2xl p-5 md:p-7 flex flex-col border-[2.573px] border-[#848484] bg-[linear-gradient(180deg,#000_0%,#4D1561_35%,#FFF_55%,#7D0BA8_60%,#2A0270_80%,#020204_100%)] h-full"
         >
-          <h3 className="text-s font-semibold tracking-wider text-white/90 mb-3">
+          <h3 className="text-xs md:text-s font-semibold tracking-wider text-white/90 mb-3">
             TEAM PRO
           </h3>
-          <p className="text-xs text-white/80 leading-relaxed mb-8">
+          <p className="text-[11px] md:text-xs text-white/80 leading-relaxed mb-8">
             Lorem ipsum dolor sit amet consectetur adipiscing elit. Quas
             laudantium libero expedita totam doloremque. Amet quibusdam
             repudiandae sapiente voluptatem mollitia soluta nulla quam alias,
             esque doloremque modi laboriosam esse eos?
           </p>
 
-          <div className="flex items-end gap-2 mb-6">
-            <span className="text-5xl font-bold text-white leading-none">$180</span>
+          <div className="flex items-end gap-2 mb-6 flex-wrap">
+            <span className="text-4xl md:text-5xl font-bold text-white leading-none whitespace-nowrap">
+              $180
+            </span>
             <span className="flex flex-col leading-tight pb-1">
-              <span className="text-xs font-semibold text-white">USD</span>
-              <span className="text-xs text-white/80 whitespace-nowrap">One time purchase</span>
+              <span className="text-[10px] md:text-xs font-semibold text-white">USD</span>
+              <span className="text-[9px] md:text-xs text-white/80 whitespace-nowrap">One time purchase</span>
             </span>
           </div>
 
-          <button className="w-full py-3 font-medium mb-8 transition-transform hover:scale-[1.02] text-black flex items-center justify-center whitespace-nowrap rounded-[36.671px] bg-white shadow-[0_5.147px_35.77px_0_rgba(0,0,0,0.25)]">
+          <button className="w-full py-2.5 md:py-3 font-medium mb-8 transition-transform hover:scale-[1.02] text-black flex items-center justify-center whitespace-nowrap rounded-[36.671px] bg-white shadow-[0_5.147px_35.77px_0_rgba(0,0,0,0.25)] text-sm md:text-base">
             Get it Now!
           </button>
 
-          <p className="text-sm text-white/90 mb-4">Everything in PREVIEW plus:</p>
-          <ul className="flex flex-col gap-3">
+          <p className="text-xs md:text-sm text-white/90 mb-4">Everything in PREVIEW plus:</p>
+          <ul className="flex flex-col gap-2 md:gap-3">
             {features.map((feature) => (
               <li
                 key={feature}
-                className="flex items-center gap-2 text-sm text-white/90"
+                className="flex items-center gap-2 text-xs md:text-sm text-white/90"
               >
                 <span className="text-white/80">
                   <CheckIcon />
